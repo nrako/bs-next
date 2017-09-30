@@ -29,3 +29,10 @@ module Head = {
   let make children =>
     ReasonReact.wrapJsForReason reactClass::head props::(Js.Obj.empty ()) children;
 };
+
+module Error = {
+  external error : ReasonReact.reactClass = "default" [@@bs.module "next/error"];
+  let make statusCode::(statusCode: option int)=? children =>
+    ReasonReact.wrapJsForReason
+      reactClass::error props::Js.Undefined.({"statusCode": from_opt statusCode}) children;
+};
