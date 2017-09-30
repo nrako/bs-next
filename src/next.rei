@@ -8,12 +8,12 @@ module Link: {
     shallow::Js.boolean? =>
     passHref::Js.boolean? =>
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps ReasonReact.actionless;
 };
 
 module Head: {
   external head : ReasonReact.reactClass = "default" [@@bs.module "next/head"];
   let make:
     array ReasonReact.reactElement =>
-    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps;
+    ReasonReact.component ReasonReact.stateless ReasonReact.noRetainedProps ReasonReact.actionless;
 };
