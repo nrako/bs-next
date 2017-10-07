@@ -1,38 +1,8 @@
-module Link = {
-  external link : ReasonReact.reactClass = "default" [@@bs.module "next/link"];
-  let make
-      ::href=?
-      ::_as=?
-      prefetch::(prefetch: option Js.boolean)=?
-      replace::(replace: option Js.boolean)=?
-      shallow::(shallow: option Js.boolean)=?
-      passHref::(passHref: option Js.boolean)=?
-      children =>
-    ReasonReact.wrapJsForReason
-      reactClass::link
-      props::
-        Js.Undefined.(
-          {
-            "href": from_opt href,
-            "as": from_opt _as,
-            "prefetch": from_opt prefetch,
-            "replace": from_opt replace,
-            "shallow": from_opt shallow,
-            "passHref": from_opt passHref
-          }
-        )
-      children;
-};
+/**
+ * Components
+ */
+module Link = LinkRe;
 
-module Head = {
-  external head : ReasonReact.reactClass = "default" [@@bs.module "next/head"];
-  let make children =>
-    ReasonReact.wrapJsForReason reactClass::head props::(Js.Obj.empty ()) children;
-};
+module Head = HeadRe;
 
-module Error = {
-  external error : ReasonReact.reactClass = "default" [@@bs.module "next/error"];
-  let make statusCode::(statusCode: option int)=? children =>
-    ReasonReact.wrapJsForReason
-      reactClass::error props::Js.Undefined.({"statusCode": from_opt statusCode}) children;
-};
+module Error = ErrorRe;
